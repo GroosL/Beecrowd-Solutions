@@ -1,33 +1,21 @@
-#include <algorithm>
-#include <iomanip>
-#include <iostream>
-#include <iterator>
-#include <string>
-#include <vector>
-
-static bool str_compare(std::string a, std::string b) {
-  return (a.size() < b.size());
-}
+#include <bits/stdc++.h>
 
 int main() {
-  int n = 1;
-
-  while (std::cin >> n && n != 0) {
+  int n;
+  bool f = true;
+  while (std::cin >> n && n) {
+    if (!f) std::cout << '\n';
+    f = false;
     std::vector<std::string> v(n);
+    int mx{-1};
 
-    for (int i = 0; i < n; i++) {
-      std::string input;
-      std::cin >> input;
-      v.push_back(input);
+    for (auto& i : v) {
+      std::cin >> i;
+      if ((int)i.size() > mx) mx = i.size();
     }
-    auto result{std::max_element(v.begin(), v.end(), str_compare)};
-    auto elem{std::distance(v.begin(), result)};
-    
 
-    for (std::string str : v) {
-      std::cout << std::setw(v[elem].size());
-      // std::cout << std::right;
-      std::cout << str; 
+    for (auto str : v) {
+      std::cout << std::setw(mx) << str << '\n';
     }
   }
 }
