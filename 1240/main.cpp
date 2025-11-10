@@ -1,18 +1,27 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
+typedef long long ll;
+typedef unsigned long long ull;
 
 int main() {
+  std::ios_base::sync_with_stdio(false);
+  std::cin.tie(NULL);
+  
   int n;
   std::cin >> n;
-
-  for (int i = 0; i < n; i++) {
-    int a, b;
+  while (n--) {
+    std::string a,b;
     std::cin >> a >> b;
-    if (b > a) {
+    if (a.size() < b.size()) {
       std::cout << "nao encaixa\n";
-    } else if ((a - b) % 2 != 0) {
-      std::cout << "nao encaixa\n";
-    } else {
+      continue;
+    }
+
+    if (a.substr(a.size() - b.size()) == b) {
       std::cout << "encaixa\n";
+    }
+    else {
+      std::cout << "nao encaixa\n";
     }
   }
 }
