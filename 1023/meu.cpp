@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 
 int main() {
+  std::cin.tie(0);
+  std::ios_base::sync_with_stdio(false);
   int n{-1}, cidade{};
   bool f = true;
   while (std::cin >> n && n) {

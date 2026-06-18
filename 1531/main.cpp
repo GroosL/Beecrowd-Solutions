@@ -87,10 +87,4 @@ int main() {
   std::ios_base::sync_with_stdio(false);
   std::cin.tie(NULL);
 
-  ll n, m;
-  while (std::cin >> n >> m) {
-    ll pis = pisano(m);
-    std::cout << fib(fib(n, pis), m) << '\n';
-    // std::cout << fib(fib2(n), m) << '\n';
-  }
 }

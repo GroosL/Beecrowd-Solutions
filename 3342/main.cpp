@@ -19,12 +19,15 @@ struct Flusher{~Flusher(){if(buf_pos)fwrite(buf_out, 1, buf_pos, stdout),buf_pos
 
 int t{};
 void solve() {
-  int x1, y1, x2, y2;
-  while (std::cin >> x1 >> y1 >> x2 >> y2 && x1 && x2 && y1 && y2) {
-    if (x1 == x2 && y1 == y2) std::cout << "0\n";
-    else if (x1 == x2 || y1 == y2 || abs(x1 - x2) == abs(y1 - y2)) std::cout << "1\n";
-    else std::cout << "2\n";
-  }
+	int n;
+	std::cin >> n;
+	n*=n;
+	if (n%2 == 0) {
+		std::printf("%d casas brancas e %d casas pretas\n", n/2, n/2);
+	}
+	else {
+		std::printf("%d casas brancas e %d casas pretas\n", n/2+1, n/2);
+	}
 }
 
 void cases() {

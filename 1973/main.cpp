@@ -1,28 +1,43 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+
+#define true 1
+#define false 0
+#define MAXSIZE 1000010
+
+typedef long long unsigned llu;
+
+char seen[MAXSIZE];
 
 int main() {
-  int n, soma{};
-  std::cin >> n;
-  std::vector<int> arr(n);
-  for (int i = 0; i < n; i++) {
-    std::cin >> arr[i];
-    soma += arr[i];
-  }
-  bool pode = true;
-  int i = 1, roubos = 1;
-  arr[0]--;
-  while (i >= 0 && i < n) {
-    if (arr[i] % 2 == 0 && arr[i] > 0) {
-      i--;
-      roubos++;
-      arr[i]--;
 
-    } else if (arr[i] > 0) {
-      i++;
-      roubos++;
-      arr[i]--;
+  int i;
+  unsigned n;
+  scanf("%u", &n);
+
+  llu tot = 0;
+  unsigned sitios[n];
+  for (int i = 0; i < n; ++i)
+    scanf("%u", &sitios[i]), tot += sitios[i];
+
+  i = 0;
+  llu ans = 0;
+  while (i >= 0 && i < n) {
+
+    if (!seen[i])
+      ++ans;
+
+    seen[i] = true;
+
+    if (sitios[i] & 1)
+      --tot, --sitios[i++];
+    else {
+
+      if (sitios[i])
+        --tot, --sitios[i];
+
+      --i;
     }
   }
 
-  std::cout << roubos << ' ' << soma - roubos << '\n';
+  printf("%llu %llu\n", ans, tot);
 }
